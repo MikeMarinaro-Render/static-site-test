@@ -1,0 +1,20 @@
+# Exported from Render on 2026-07-01T16:02:24Z
+projects:
+- name: My project
+  environments:
+  - name: Staging
+    services:
+    - type: web
+      name: Staging Static Site (Blueprint Test)
+      runtime: static
+      repo: https://github.com/MikeMarinaro-Render/static-site-test
+      staticPublishPath: .
+      routes:
+      - type: rewrite
+        source: /testt
+        destination: pre-dev.ghost.io
+      headers:
+      - path: /testt
+        name: x-ghost-forwarded-host
+        value: pre-dev.ghost.io
+      autoDeployTrigger: commit
